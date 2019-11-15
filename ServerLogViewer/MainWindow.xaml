@@ -7,11 +7,30 @@
         mc:Ignorable="d"
         Title="Server Log Viewer" Height="450" Width="800">
     <Grid>
-        <Label Content="Version" HorizontalAlignment="Left" Height="44" Margin="28,10,0,0" VerticalAlignment="Top" Width="212" Cursor="No"/>
-        <Label Content="Date" HorizontalAlignment="Left" Height="44" Margin="28,59,0,0" VerticalAlignment="Top" Width="212" Cursor="No"/>
-        <DataGrid x:Name="dataGridLogs" HorizontalAlignment="Left" Height="223" Margin="28,103,0,0" VerticalAlignment="Top" Width="739"/>
-        <Label x:Name="status" Content="Status" HorizontalAlignment="Left" Height="44" Margin="28,331,0,0" VerticalAlignment="Top" Width="212" Cursor="No"/>
-        <Label x:Name="lbInputFile" Content="&lt;Insert log file Here&gt;" HorizontalAlignment="Left" Height="74" Margin="281,328,0,0" VerticalAlignment="Top" Width="486" AllowDrop="True" Background="#FFCAC2C2" FontSize="15" Cursor="No" FontWeight="Bold" FontStyle="Normal" DragEnter="lbInputFile_DragEnter" Drop="lbInputFile_Drop" FontStretch="Medium" DragOver="lbInputFile_DragOver"/>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+
+        </Grid.RowDefinitions>
+
+        <Label Content="lbVersion" HorizontalAlignment="Left" Height="44" Margin="28,10,0,0" VerticalAlignment="Top" Width="212" Cursor="No"/>
+        <Label x:Name="lbDate" Content="Date" HorizontalAlignment="Left" Height="44" Margin="28,59,0,0" VerticalAlignment="Top" Width="212" Cursor="No"/>
+        <DataGrid x:Name="dgServerLogModel" 
+                  HorizontalAlignment="Left"
+                  Height="223" 
+                  Margin="28,103,0,0" 
+                  VerticalAlignment="Top" 
+                  AlternatingRowBackground="LightGray"
+                  Width="739">
+        </DataGrid>
+
+        <Label x:Name="lbStatus" Content="Status" HorizontalAlignment="Left" Height="44" Margin="28,331,0,0" VerticalAlignment="Top" Width="212" Cursor="No"/>
+        <Label x:Name="lbInputFile" Content="&lt;Insert log file Here&gt;" HorizontalAlignment="Left" Height="74" Margin="281,328,0,0" VerticalAlignment="Top" Width="486" AllowDrop="True" Background="#FFCAC2C2" FontSize="15" Cursor="No" FontWeight="Bold" FontStyle="Normal" DragEnter="LbInputFile_DragEnter" Drop="LbInputFile_Drop" FontStretch="Medium" DragOver="LbInputFile_DragOver"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="648,32,0,0" VerticalAlignment="Top" Height="49" Width="119" Click="Button_Click"/>
 
     </Grid>
 </Window>

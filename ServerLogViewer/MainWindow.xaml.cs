@@ -1,5 +1,8 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using Caliburn.Micro;
+using ServerLogLibrary;
+using System;
+using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace ServerLogViewer
 {
@@ -8,14 +11,21 @@ namespace ServerLogViewer
     /// </summary>
     public partial class MainWindow : Window
     {
+        private IServerViewModel _serverLogViewModel { get; set; }
+
+        private ObservableCollection<IServerDataItem> _data { get; set; } = new ObservableCollection<IServerDataItem>();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            _serverLogViewModel = new LogViewModel();
+
+            dgServerLogModel.ItemsSource = _data;
         }
 
-        private void lbInputFile_DragEnter(object sender, DragEventArgs e)
+        private void LbInputFile_DragEnter(object sender, DragEventArgs e)
         {
-            status.Content = "Drag";
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 e.Effects = DragDropEffects.All;
@@ -26,16 +36,16 @@ namespace ServerLogViewer
             }
         }
 
-        private void lbInputFile_DragOver(object sender, DragEventArgs e)
+        private void LbInputFile_DragOver(object sender, DragEventArgs e)
         {
             //Check if the dragged file has the 'txt extension'
             bool dropEnabled = true;
-            
+
             if (e.Data.GetDataPresent(DataFormats.FileDrop, true))
             {
                 string[] filenames = e.Data.GetData(DataFormats.FileDrop, true) as string[];
 
-                dropEnabled = System.IO.Path.GetExtension(filenames[0]).ToUpperInvariant().Equals(".TXT"); 
+                dropEnabled = System.IO.Path.GetExtension(filenames[0]).ToUpperInvariant().Equals(".TXT");
             }
 
             if (!dropEnabled)
@@ -45,11 +55,26 @@ namespace ServerLogViewer
             }
         }
 
-        private void lbInputFile_Drop(object sender, DragEventArgs e)
+        private void LbInputFile_Drop(object sender, DragEventArgs e)
         {
             string[] fileNames = e.Data.GetData(DataFormats.FileDrop, false) as string[];
-            status.Content = "Drop";
+            lbStatus.Content = "loading...";
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (_data.Count <= 0)
+            {
+                _serverLogViewModel.LoadLogFile("Filename");
+            }
+
+            foreach (var item in _serverLogViewModel.GetViewItems())
+            {
+                _data.Add(item);
+            }
+
+            lbStatus.Content = "processing...";
+        }
     }
 }
