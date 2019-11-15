@@ -1,6 +1,4 @@
-﻿using Caliburn.Micro;
-using ServerLogLibrary;
-using System;
+﻿using ServerLogLibrary;
 using System.Collections.ObjectModel;
 using System.Windows;
 

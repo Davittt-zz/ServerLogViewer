@@ -1,5 +1,4 @@
-﻿using Caliburn.Micro;
-using ServerLogLibrary;
+﻿using ServerLogLibrary;
 using System.Collections.Generic;
 
 namespace ServerLogViewer
