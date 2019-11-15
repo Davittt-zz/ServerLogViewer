@@ -1,0 +1,17 @@
+﻿<Window x:Class="ServerLogViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ServerLogViewer"
+        mc:Ignorable="d"
+        Title="Server Log Viewer" Height="450" Width="800">
+    <Grid>
+        <Label Content="Version" HorizontalAlignment="Left" Height="44" Margin="28,10,0,0" VerticalAlignment="Top" Width="212" Cursor="No"/>
+        <Label Content="Date" HorizontalAlignment="Left" Height="44" Margin="28,59,0,0" VerticalAlignment="Top" Width="212" Cursor="No"/>
+        <DataGrid x:Name="dataGridLogs" HorizontalAlignment="Left" Height="223" Margin="28,103,0,0" VerticalAlignment="Top" Width="739"/>
+        <Label x:Name="status" Content="Status" HorizontalAlignment="Left" Height="44" Margin="28,331,0,0" VerticalAlignment="Top" Width="212" Cursor="No"/>
+        <Label x:Name="lbInputFile" Content="&lt;Insert log file Here&gt;" HorizontalAlignment="Left" Height="74" Margin="281,328,0,0" VerticalAlignment="Top" Width="486" AllowDrop="True" Background="#FFCAC2C2" FontSize="15" Cursor="No" FontWeight="Bold" FontStyle="Normal" DragEnter="lbInputFile_DragEnter" Drop="lbInputFile_Drop" FontStretch="Medium" DragOver="lbInputFile_DragOver"/>
+
+    </Grid>
+</Window>
